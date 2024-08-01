@@ -1,0 +1,505 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static '/assets/css/style.css' %}">
+    <link rel="stylesheet" href="{% static '/assets/css/media_query.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Jost:regular,500,800">
+    <title>Interactive Personal website to Jakhongir Abbasov</title>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <header>
+
+            <button class="menu-open-btn">
+                <span>Menu</span>
+                <ion-icon name="menu-outline"></ion-icon>
+            </button>
+            
+            <nav class="nav">
+                <button class="menu-close-btn">
+                    <ion-icon name="close-outline"></ion-icon>
+                </button>
+
+                <h4 class="nav-heading">Menu</h4>
+
+                <ul>
+
+                    <li class="nav-item">
+                        <a href="#home" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#about" class="nav-link">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#topresults" class="nav-link">Top Results</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#courses" class="nav-link">Courses</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#videos" class="nav-link">Videos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#results" class="nav-link">Student Results!</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#contact" class="nav-link">Contacts</a>
+                    </li>
+
+                </ul>
+
+                <div class="nav-footer">
+                    <ul class="social-link">
+                        <li>
+                            <a href="https://t.me/ogleader" target="_blank">
+                                <ion-icon name="chatbubbles-outline"></ion-icon>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.instagram.com/ogleader_" target="_blank">
+                                <ion-icon name="logo-instagram"></ion-icon>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="tel:+998951967901">
+                                <ion-icon name="call-outline"></ion-icon>
+                            </a>
+                        </li>
+                    </ul>
+
+                    <p>Developed loved by 
+                        <a href="https://www.instagram.com/kilicevv_i" class="link-underline" target="_blank">Ibrohim Qilichev</a>
+                        <a href="https://www.instagram.com/zero.1.max" class="link-underline" target="_blank">& zero1max</a>
+                    </p>
+                </div>
+
+            </nav>
+
+            {% for item in users %}
+            <section class="intro section-padding">
+                
+                <div class="intro-profile">
+                    <div class="intro-border one"></div>
+                    <div class="intro-border two"></div>
+
+                    <div class="img-box">
+                        {% if item.photo %}
+                        <img src="{{item.photo.url}}" alt="" class="intro-img" width="100%" loading="lazy">
+                        {% endif %}                    
+                    </div>
+
+                    <p>Hi there! I am</p>
+
+                    <div class="profile-name">
+                        <span>[</span>
+                        <div>Jakhongir Abbasov</div>
+                        <span>]</span>
+                    </div>
+                </div>
+
+                <a href="#contact" class="intro-link">
+                    <span class="circle"></span>
+                    <span class="link-underline">{{ item.admin }}</span>
+                </a>
+                
+            </section>
+            {% endfor %} 
+           
+        </header>
+
+        <main>
+            
+                <section class="section-padding" id="home">
+                    {% for intro in intros %}
+                    <h3 class="section-subtitle">Introduction</h3>
+
+                    <h2 class="section-title">IELTS & General English Tutor</h2>
+
+                    <p class="section-desc link-underline">
+                        {{ intro.description }}<br>
+                        <a href="{{ intro.yd_link }}" target="_blank">{{ intro.yellow_description }}</a>
+                    </p>
+
+                    <img src="{% static '/assets/images/signature_pandadoc.png' %}" alt="" width="350px" loading="lazy">
+                    {% endfor %}
+                </section>
+            
+
+            <section class="section-padding" id="about">
+                {% for about in abouts %}
+                <h3 class="section-subtitle">About me</h3>
+
+                <h2 class="section-title">Personal Summary</h2>
+                <p class="section-desc">
+                    {{ about.description }} 
+                </p>
+
+                <table class="about-table">
+                    <tr>
+                        <th>Name</th>
+                        <td>{{ about.name }}</td>
+                    </tr>
+                    <tr>
+                        <th>Birthday</th>
+                        <td>{{ about.birthday }}</td>
+                    </tr>
+                    <tr>
+                        <th>Age</th>
+                        <td>{{ about.age }}</td>
+                    </tr>
+                    <tr>
+                        <th>Address</th>
+                        <td><a href="{{ about.address_link }}" class="link-underline" target="_blank">{{ about.address }}</a></td>
+                    </tr>
+                    <tr>
+                        <th>Phone</th>
+                        <td><a href="tel:{{ about.phone }}" class="link-underline">{{ about.phone }}</a></td>
+                    </tr>
+                    <tr>
+                        <th>Email</th>
+                        <td><a href="{{ about.email_link }}" class="link-underline">{{ about.email }}</a></td>
+                    </tr>
+                    <tr>
+                        <th>Telegram</th>
+                        <td><a href="{{ about.tg_link }}" class="link-underline" target="_blank">{{ about.telegram }}</a></td>
+                    </tr>
+                </table>
+                
+                
+                <button class="download-cv">
+                    <ion-icon name="videocam-outline"></ion-icon>
+                    <a href="{{ about.vd_link }}" target="_blank">
+                        <span>A little about me (English)</span>
+                    </a>
+                </button>
+                {% endfor %}
+
+                <div class="about-tab">
+                    <ul class="tab-nav">
+                        <li>
+                            <button class="one tab-button active">Experience</button>
+                        </li>
+                        <li>
+                            <button class="two tab-button">Education</button>
+                        </li>
+                        <li>
+                            <button class="three tab-button">Skills</button>
+                        </li>
+                    </ul>
+
+                    <div class="tab-content-group">
+                    
+                        <div class="one tab-content active">
+                            {% for experience in experiences %}
+                            <div class="content-card">
+                                <div class="card-head">
+                                    <h4>{{ experience.wheredidyouwork }}</h4>
+                                    <p>({{ experience.start_date }} - {{ experience.end_date }})</p>
+                                </div>
+
+                                <div class="card-body">
+                                    <h3>{{ experience.role }}</h3>
+                                    <p>{{ experience.description }}</p>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    
+                        <div class="two tab-content">
+                            {% for education in educations %}
+                            <div class="content-card">
+                                <div class="card-head">
+                                    <h4>{{ education.wheredidyoulearn }}</h4>
+                                    <p>({{ education.start_date }} - {{ education.end_date }})</p>
+                                </div>
+
+                                <div class="card-body">
+                                    <h3>{{ education.course }} </h3>
+                                    <p>{{ education.description }}</p>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                     
+                        <div class="three tab-content">
+                            <div class="skill-box">
+                                <h4 class="skill-name">Lorem ipsum</h4>
+
+                                <div class="progress-bar">
+                                    <div class="progress" style="width: 97%;"></div>
+                                    <div class="progress-rate" style="left: 97%;">97%</div>
+                                </div>
+
+
+                            </div>
+
+                            <div class="skill-box">
+                                <h4 class="skill-name">Lorem ipsum</h4>
+
+                                <div class="progress-bar">
+                                    <div class="progress" style="width: 89%;"></div>
+                                    <div class="progress-rate" style="left: 89%;">89%</div>
+                                </div>
+
+
+                            </div>
+
+                            <div class="skill-box">
+                                <h4 class="skill-name">Lorem ipsum</h4>
+
+                                <div class="progress-bar">
+                                    <div class="progress" style="width: 100%;"></div>
+                                    <div class="progress-rate" style="left: 100%;">100%</div>
+                                </div>
+
+
+                            </div>
+
+                            <div class="skill-box">
+                                <h4 class="skill-name">Lorem ipsum</h4>
+
+                                <div class="progress-bar">
+                                    <div class="progress" style="width: 70%;"></div>
+                                    <div class="progress-rate" style="left: 70%;">70%</div>
+                                </div>
+
+
+                            </div>
+
+                            <p class="skill-text">
+                                I am experienced an enthusiastic and focused teacher committed to safeguarding and
+                                promoting the
+                                education and well-being of learners at all times, managing not only students but also
+                                their parents
+                                and fellow teachers all with the aim of promoting and reinforcing a student's
+                                independence and
+                                self-esteem. I am passionate about giving learners the best possible education in and
+                                working in a
+                                busy environment and relish the challenge of a diverse workload.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            
+            <section class="section-padding" id="topresults">
+                <h3 class="section-subtitle">Results of my students!</h3>
+            
+                <div class="wrapper">
+                    <h2 class="section-title">Top 5 results!</h2>
+                    <div class="btn-group">
+                        <button id="portfolio-carousel-prev">
+                            <div class="arrow">
+                                <div class="arrow-head-left"></div>
+                            </div>
+                        </button>
+            
+                        <button id="portfolio-carousel-next">
+                            <div class="arrow">
+                                <div class="arrow-head-right"></div>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+            
+                <div class="portfolio-carousel">
+                    <div class="portfolio-carousel-inner">
+                        {% for top5 in top5s %}
+                        <div class="portfolio-carousel-card">
+                            <div class="card-head">
+                                {% if top5.photo %}
+                                <img src="{{ top5.photo.url }}" alt="{{ top5.name }}" width="100" loading="lazy">
+                                {% endif %}
+                            </div>
+                            <div class="card-body">
+                                <p>{{ top5.name }}</p>
+                                <h4><a href="#!">{{ top5.overall }}</a></h4>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </section>
+            
+
+
+            <section class="section-padding" id="courses">
+                <h3 class="section-subtitle">About my courses</h3>
+
+                <h2 class="section-title">Prices</h2>
+
+                <p class="section-desc">Karoci buyoda mani kurslarim
+                </p>
+
+                <div class="service-cards-group">
+                    {% for course in courses %}
+                    <div class="service-card">
+                        <div class="card-body">
+                            <h3>{{ course.course }}</h3>
+                            <p>{{ course.description }}</p>
+                        </div>
+
+                        <div class="card-footer">
+                            <div>{{ course.price }}</div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </section>
+
+            <section class="section-padding" id="videos">
+                <h3 class="section-subtitle">Watching time!</h3>
+
+                <h2 class="section-title">Watch videos about me</h2>
+
+                <div class="wrapper">
+                    <a href="https://www.instagram.com/p/C0uAubeCYq7/" target="_blank">
+                        <div class="img-box">
+                            <img src="{% static '/assets/images/Year-Teacher1.png' %}" alt="" width="500px" loading="lazy">
+                        </div>
+                    </a>
+
+                    <a href="https://www.instagram.com/p/CmCc8rajBp6/" target="_blank">
+                        <div class="img-box">
+                            <img src="{% static '/assets/images/Top-Teacher.png' %}" alt="" width="500px" loading="lazy">
+                        </div>
+                    </a>
+
+                    <a href="https://www.instagram.com/p/CrgZMx1gpWs/" target="_blank">
+                        <div class="img-box">
+                            <img src="{% static '/assets/images/About-English.png' %}" alt="" width="500px" loading="lazy">
+                        </div>
+                    </a>
+
+                    <a href="https://www.instagram.com/p/Cf9Q3l1DEAH/" target="_blank">
+                        <div class="img-box">
+                            <img src="{% static '/assets/images/About-Uzbek.png' %}" alt="" width="500px" loading="lazy">
+                        </div>
+                    </a>
+
+                    <a href="https://www.instagram.com/p/CnboaP2pWsj/" target="_blank">
+                        <div class="img-box">
+                            <img src="{% static '/assets/images/My-signa.png' %}" alt="" width="500px" loading="lazy">
+                        </div>
+                    </a>
+
+                    <a href="https://www.instagram.com/p/CzT8PEsC5UX/" target="_blank">
+                        <div class="img-box">
+                            <img src="{% static '/assets/images/My-Motive.png' %}" alt="" width="500px" loading="lazy">
+                        </div>
+                    </a>
+
+
+
+
+                </div>
+
+                <div class="testimonials">
+                    <div class="testimonials-content">
+                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sint aut fugiat esse sit accusamus
+                            officiis velit at expedita quidem perspiciatis.</p>
+
+                        <div class="title">Jakhongir Abbasov</div>
+                        <div class="subtitle">IELTS & General English Tutor</div>
+                    </div>
+                </div>
+            </section>
+
+            
+            <section class="section-padding" id="results">
+                <h3 class="section-subtitle">Results of my students!</h3>
+
+                <h2 class="section-title">Happy students</h2>
+
+                <div class="article-grid">
+                    {% for result in results %}
+                    <article class="article-box">
+                        <div class="img-box">
+                            <img src="{{ result.photo.url }}" alt="" width="100%" loading="lazy">
+                        </div>
+
+                        <p class="publish-date">{{ result.datatime }}</p>
+
+                        <h3 class="article-name">
+                            <a href="#!">{{ result.name }}</a>
+                        </h3>
+                    </article>
+                    {% endfor %}
+                    
+                </div>
+
+                <button class="load-more"> <a href="tel:+998951967901">Join To The Group Now!</a> </button>
+            </section>
+            
+            
+            <section class="section-padding" id="contact">
+                <h3 class="section-subtitle">Come join us!</h3>
+
+                {% for join in joins %}
+                <h2 class="section-title">{{ join.title }}</h2>
+
+                <p class="section-desc">{{ join.description }}</p>
+
+
+
+                <div class="address">
+                    <h4>Address</h4>
+                    <address><a
+                            href="{{ join.address_link }}" target="_blank">{{ join.address }}</a> </address>
+                </div>
+
+                <div class="phone">
+                    <h4>Phone</h4>
+                    <a href="tel:{{ join.phone }}">{{ join.phone }}</a>
+                </div>
+
+                <div class="email">
+                    <a href="{{ join.email_link }}" class="link-underline" target="_blank">{{ join.email }}</a>
+                {% endfor %}
+                </div>
+            </section>
+
+
+
+
+            <div class="footer">
+                <a href="#home" class="go-top">
+                    <div class="arrow">
+                        <div class="arrow-head"></div>
+                    </div>
+                </a>
+
+                <p class="copyright">
+                    Copyright © 2024. All rights reserved.
+                    <br>
+                    Developed loved by 
+                    <a href="https://www.instagram.com/kilicevv_i" class="link-underline" target="_blank">Ibrohim Qilichev</a>
+                    <a href="https://www.instagram.com/zero.1.max" class="link-underline" target="_blank">& zero1max</a>
+                </p>
+            </div>
+
+
+
+        </main>
+    </div>
+
+
+
+
+    <script src="{% static '/assets/js/script.js' %}"></script>
+
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons/esm.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html>
