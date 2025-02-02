@@ -1,9 +1,10 @@
 from django.contrib import admin
+from django.utils.html import format_html
+#
 from .models import User, Introduction, AboutMe, ComeJoinUs,\
     StudentsResults, StudentsTop5Results, Education, Experience, Courses
-from django.utils.html import format_html
 
-# Register your models here.
+
 class UserAdmin(admin.ModelAdmin):
     list_display = ['name', 'admin', 'is_published', 'photo_tag']
     list_editable = ['is_published',]
@@ -15,7 +16,8 @@ class UserAdmin(admin.ModelAdmin):
         else:
             return format_html('-')
     photo_tag.short_description = 'Photo'
-    
+
+
 class IntroAdmin(admin.ModelAdmin):
     list_display = ['description', 'is_published', 'yd_link']
     list_editable = ['is_published',]
@@ -57,9 +59,11 @@ class ExperienceAdmin(admin.ModelAdmin):
     list_display = ['wheredidyouwork', 'role', 'is_published']
     list_editable = ['is_published']
 
+
 class EducationAdmin(admin.ModelAdmin):
     list_display = ['wheredidyoulearn', 'course', 'is_published']
     list_editable = ['is_published']
+
 
 class CoursesAdmin(admin.ModelAdmin):
     list_display = ['course', 'is_published']

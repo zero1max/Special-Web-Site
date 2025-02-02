@@ -49,7 +49,8 @@ class ComeJoinUs(models.Model):
 
     def __str__(self):
         return self.title
-    
+
+
 class Experience(models.Model):
     wheredidyouwork = models.TextField(verbose_name='Where')
     role = models.TextField(verbose_name='Role')
@@ -60,7 +61,8 @@ class Experience(models.Model):
 
     def __str__(self):
         return self.role
-    
+
+
 class Education(models.Model):
     wheredidyoulearn = models.TextField(verbose_name='Where')
     course = models.TextField(verbose_name='Kurs')
@@ -81,6 +83,7 @@ class StudentsTop5Results(models.Model):
 
     def __str__(self):
         return self.name
+  
     
 class Courses(models.Model):
     course = models.TextField(verbose_name='Kurs')

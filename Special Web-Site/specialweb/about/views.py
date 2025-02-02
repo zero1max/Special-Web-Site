@@ -1,10 +1,10 @@
 from django.shortcuts import render
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView
 from django.urls import reverse_lazy
+#
 from .models import User, Introduction, AboutMe, ComeJoinUs,\
       StudentsResults, StudentsTop5Results, Experience, Education, Courses
 
-# Create your views here.
 
 class HomeView(ListView):
     model = User
