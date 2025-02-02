@@ -25,3 +25,32 @@ Loyihani mahalliy muhitda ishga tushirish uchun quyidagi qadamlarni bajaring:
    ```bash
    git clone https://github.com/foydalanuvchi/Special-Web-Site.git
    cd Special-Web-Site
+
+2. Virtual muhit yarating va faollashtiring:
+    ```bash
+    python -m venv venv
+    source venv/bin/activate  # Windows uchun venv\Scripts\activate
+
+3. Zarur paketlarni o'rnating:
+    ```bash
+    pip install -r requirements.txt
+
+4. Ma'lumotlar bazasini migratsiya qiling:
+    ```bash
+    python manage.py migrate
+
+5. Superuser yarating (admin paneliga kirish uchun):
+    ```bash
+    python manage.py createsuperuser
+
+6. Loyihani ishga tushiring:
+    ```bash
+    python manage.py runserver
+
+7. Veb-saytni brauzerda oching:
+    ```bash
+    http://127.0.0.1:8000/
+
+8. Admin panel ga kirish:
+    ```bash
+    http://127.0.0.1:8000/admin/
